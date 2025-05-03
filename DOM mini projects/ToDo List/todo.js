@@ -38,6 +38,11 @@ const delBtn = document.createElement('button');
 delBtn.innerText='Delete';
 parentDiv.appendChild(delBtn);
 
+//complete Button
+const completeBtn = document.createElement('button');
+completeBtn.innerText = 'Mark Complete';
+parentDiv.appendChild(completeBtn);
+
 //adding task to list
 addBtn.onclick = () =>{
     if(input.value){
@@ -54,17 +59,39 @@ addBtn.onclick = () =>{
 
 //deleting task
 delBtn.onclick = () => {
-    const list = ul.getElementsByTagName('li');
-    const tasksArr = Array.from(list);
+    let list = ul.getElementsByTagName('li');
+    let tasksArr = Array.from(list);
     
     for(let task of tasksArr){
-        const checkbox = task.querySelector("input[type='checkbox']");
+        let checkbox = task.querySelector("input[type='checkbox']");
         if(checkbox.checked){
             ul.removeChild(task);
             totalRemainingTasks--;
+            if(totalRemainingTasks < 0) {
+                totalRemainingTasks = 0;
+            }
             todoCount.innerHTML = `Total Remaining Tasks ${totalRemainingTasks}`
 
         }
     }
 }
 
+completeBtn.onclick = () => {
+    let list = ul.getElementsByTagName('li');
+    let tasksArr = Array.from(list);
+
+
+    for(let task of tasksArr){
+        let checkbox = task.querySelector("input[type='checkbox']");
+        if(checkbox.checked){
+            task.style.textDecoration= "line-through";
+            totalRemainingTasks--;
+            if(totalRemainingTasks < 0) {
+                totalRemainingTasks = 0;
+            }
+            todoCount.innerHTML = `Total Remaining Tasks ${totalRemainingTasks}`
+            checkbox.checked = false;
+
+        }
+}
+}

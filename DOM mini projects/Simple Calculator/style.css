@@ -1,0 +1,23 @@
+.container{
+    
+    height: 200px;
+    width: 170px;
+    background-color: gray;
+    margin-left: 2em;
+}
+
+button{
+    border: solid 2px white;
+    border-radius: 20%;
+    margin: 0.5em 5% 0.5em 6%;
+}
+
+#equals {
+    justify-items: center;
+ margin: 0.5em 40% 0.5em 40%;   
+}
+ 
+input{
+    width: 5em;
+    margin-left:0.5em;
+}
